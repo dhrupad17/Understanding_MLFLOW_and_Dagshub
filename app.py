@@ -65,6 +65,10 @@ if __name__=="__main__":
         predictions=lr.predict(train_x)
         signature=infer_signature(train_x,predictions)
 
+        remote_server_uri="https://dagshub.com/dhrupad17/Understanding_MLflow_and_Dagshub.mlflow"
+
+        mlflow.set_tracking_uri(remote_server_uri)
+
         tracking_url_type_store=urlparse(mlflow.get_tracking_uri()).scheme
         if tracking_url_type_store!="file":
             mlflow.sklearn.log_model(
